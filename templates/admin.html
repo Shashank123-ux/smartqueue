@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | Smart Queue</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #0e0e10;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      color: #ff4141;
+      margin-top: 30px;
+    }
+    table {
+      width: 90%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      background: #1b1b1d;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid #333;
+    }
+    th {
+      background: #ff4141;
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background-color: #222;
+    }
+    button {
+      background: #ff4141;
+      border: none;
+      color: #fff;
+      padding: 8px 14px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #ff1e1e;
+    }
+    .export-btn {
+      background: #007bff;
+      margin-top: 20px;
+    }
+    .export-btn:hover {
+      background: #0062cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smart Queue – Admin Dashboard</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{ user[0] }}</td>
+        <td>{{ user[1] }}</td>
+        <td>{{ user[2] }}</td>
+        <td>{{ user[3] }}</td>
+        <td>{{ user[4] }}</td>
+        <td>{{ user[5] }}</td>
+        <td>
+          <form action="/delete/{{ user[0] }}" method="post" style="margin:0;">
+            <button type="submit">Mark Completed</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <form action="/export" method="get">
+    <button type="submit" class="export-btn">📤 Export to Excel</button>
+  </form>
+</body>
+</html>

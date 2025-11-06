@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Current Queue</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>Current Queue</h1>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+    </tr>
+    {% for q in queue %}
+    <tr>
+      <td>{{ q.id }}</td>
+      <td>{{ q.name }}</td>
+      <td>{{ q.phone }}</td>
+      <td>{{ q.latitude }}</td>
+      <td>{{ q.longitude }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

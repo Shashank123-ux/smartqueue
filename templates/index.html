@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Queue Registration</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Smart Queue System</h1>
+    <form id="queueForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <input type="email" id="email" placeholder="Email Address" required>
+
+      <button type="button" id="getLocation">📍 Get Location</button>
+      <input type="text" id="latitude" placeholder="Latitude" readonly>
+      <input type="text" id="longitude" placeholder="Longitude" readonly>
+
+      <button type="submit">Join Queue</button>
+    </form>
+
+    <div id="messageBox"></div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
